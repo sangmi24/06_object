@@ -19,13 +19,13 @@ public class Student {  //com.kh.chap01_abstraction.model.vo.Student; =>풀네임
 
 	
 	// [필드부]
-	// 필드 : 변수(값 1개를 담는 공간) => 자료형 변수명;
+	// 필드 : 변수(값 1개를 담는 공간) => 자료형 변수명;   //클래스안에서 사용되는 변수: 지역변수
 	// 접급제한자 자료형 필드명;
 	
 	//접근제한자:이 필드에 접근할수 있는 범위를 제한할 수 있는 키워드 
 	//        (public > protected > default > private)
 	//         클래스 영역 안에서 필드를 선언할 때 반드시 접근제한자를 써줘야 한다.
-	//          생략 default => /*default*/ String name; 이런식으로  
+	//          생략 default => /*default*/ String name; 이런식으로 생략  
 	
 	/*
 	 * 캡슐화: 필드에 담긴 값을 숨겨주겠다.
@@ -63,15 +63,19 @@ public class Student {  //com.kh.chap01_abstraction.model.vo.Student; =>풀네임
      // 데이터를 기록 및 수정하는 기능의 메소드 : setter 메소드
      // => 실행 내용이 필드에 값을 대입하는 구문 형식으로 작성
      // => 이때, 이 메소드는 접근 가능하도록 해야되기 때문에 항상 public 접근제한자를 사용해야 한다. 
+     //void 쓰는 이유는 나올필요가 없어서 일단 set만들어 놓는 거임
      //필드에서는 간접적으로 해야 하고 메소드에서는 퍼블릭 직접적으로 해야 접근이 가능하다. 
+     
+     //필드 갯수 = setter 갯수 = getter 갯수
+     //각 필드의 한개씩
      
      //이름값을 기록 및 수정할 수있는 기능의 메소드(name 이라는 필드에 값을 대입하는 용도)
      //public 반환자료형 메소드명(재료) {
         public void setName(String name) { 
     	 
     	       //변수명= 재료(값);  변수명앞에 this넣어줌
-    	   this.name = name  ;  //관례상 name 같게 만들어줌 , this는 이 둘을 구분 시켜주기 위해서임
-    	                
+    	   this.name = name  ;  //관례상 name 같게 만들어줌 , this는 이 둘을 구분 시켜주기 위해서임(둘이 같아서 우선순위다르게 하기위해서)
+    	                        //this는 필드안에 있는 name이다. 
      }
      
        //나이값을 기록 및 수정할수 있는 기능의 메소드(age라는 필드에 값을 대입하는 용도)
@@ -79,15 +83,36 @@ public class Student {  //com.kh.chap01_abstraction.model.vo.Student; =>풀네임
         	
         	this.age= age;
         }
-       //키값을 기록 및 수정할수 있는 기능의 메소드(setHeight)
+       //키값을 기록 및 수정할수 있는 기능의 메소드(height라는 필드에 값을 대입하는 용도)
         
         public void setHeight(double height) {
         	 
         	this.height= height;
         }
      
+        // 데이터를 반환해주는 기능의 메소드 : getter 메소드
+        // name 이라는 필드에 담긴 값을 돌려주는 용도의 메소드
+        //public 반환형 메소드명() {
+        public  String getName() {  //반환시켜줘야 하니까 void말고 반환형 넣어주기
+        	 //반환할 내용물=> return 구문(태초마을로 돌아가겠다)
+        	//return 내용물;
+        	return name; //return 결과값; : 결과값을 돌려주겠다.
+        }
+        
+        //age라는 필드에 담긴 값을 돌려주는 용도의 메소드
+        public int getAge() {
+        	
+        	return age;
+        }
+        
+        //height라는 필드에 담긴 값을 돌려주는 용도의 메소드
+        public double getHeight() {
+        	
+        	return height;
+        }
      
-	
+	   //=> setter와 getter 메소드들까지 만들어주는 것이 캡슐화이다. 
+       //=> 필드마다 꼭 1개씩은 만들어 줘야한다.
 	
 }
 
